@@ -41,6 +41,13 @@ class YtAPI {
         jsonName: 'thisYear'
       }
     };
+
+    this.messages = {
+      cantParse : `Can't parse top %s HTML page from YouTube`,
+      cantGet : `Can't get top %s HTML page from YouTube`,
+      cantSave: `Can't save top %s to JSON`,
+      saved: `Top %s Saved! Length %s`
+    }
   }
 
   getHTML(params, jsonName) {
@@ -53,10 +60,10 @@ class YtAPI {
       if (array.length) {
         this.writeToJson(array, jsonName);
       } else {
-        console.error(`Can't parse top ${jsonName} HTML page from YouTube`)
+        console.error(this.messages.cantParse, jsonName)
       }
     }).catch(() => {
-      console.error(`Can't get top ${jsonName} HTML page from YouTube`)
+      console.error(this.messages.cantGet, jsonName)
     })
   }
 
@@ -81,11 +88,11 @@ class YtAPI {
   }
 
   writeToJson(array, jsonName) {
-    fs.writeFile(`${this.jsonFolder}/${jsonName}.json`, JSON.stringify(array), function (err) {
+    fs.writeFile(`${this.jsonFolder}/${jsonName}.json`, JSON.stringify(array), (err) => {
       if (err) {
-        console.error(`Can't save top ${jsonName} to JSON`);
+        console.error(this.messages.cantSave, jsonName);
       } else {
-        console.log(`Top ${jsonName} Saved! Length ${array.length}`);
+        console.log(this.messages.saved, jsonName, array.length);
       }
     });
   }
