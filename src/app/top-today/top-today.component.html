@@ -1,0 +1,6 @@
+<h2>Top Today</h2>
+<div *ngFor="let id of ids">
+  <a [href]="'https://www.youtube.com/watch?v=' + id" target="_blank">
+    <img [src]="'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'">
+  </a>
+</div>
