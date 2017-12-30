@@ -50,10 +50,18 @@ class YtAPI {
     }
   }
 
+  /**
+   * Get HTML page from YT
+   * then parse it to get id of top videos
+   * and write result to json file
+   *
+   * @param {Object} params Object with URL params
+   * @param {String} jsonName Name of created json file
+   */
   getHTML(params, jsonName) {
     let urlParams = queryString.stringify(params);
     let url = `${this.ytUrl}?${urlParams}`;
-    return fetch(url).then(res => {
+    fetch(url).then(res => {
       return res.text();
     }).then(body => {
       let array = this.parsePage(body);
@@ -67,12 +75,23 @@ class YtAPI {
     })
   }
 
+  /**
+   * Create URL string and make fetch request
+   *
+   * @param {String} period Time period for getting top YT videos
+   */
   getYTdata(period) {
     let settings = this.filters[period];
     let params = Object.assign(this.searchParams, {[this.filters.filterParam] : settings.filter});
-    return this.getHTML(params, settings.jsonName);
+    this.getHTML(params, settings.jsonName);
   }
 
+  /**
+   * Parse YT page to get video's ids
+   *
+   * @param {String} page HTML page like string
+   * @returns {Array} Array of ids
+   */
   parsePage(page) {
     let ids = [];
     let parser = new htmlparser.Parser({
@@ -87,6 +106,12 @@ class YtAPI {
     return ids;
   }
 
+  /**
+   * Create JSON file with video's ids
+   *
+   * @param {Array} array Array of video's ids
+   * @param {String} jsonName Name of json file
+   */
   writeToJson(array, jsonName) {
     fs.writeFile(`${this.jsonFolder}/${jsonName}.json`, JSON.stringify(array), (err) => {
       if (err) {
