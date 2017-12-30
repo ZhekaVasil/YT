@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "colors": "^1.1.2",
     "core-js": "^2.4.1",
     "node-fetch": "^1.7.3",
     "query-string": "^5.0.1",

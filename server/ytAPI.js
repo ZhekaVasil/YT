@@ -2,6 +2,8 @@ const fetch = require('node-fetch');
 const htmlparser = require("htmlparser2");
 const fs = require('fs');
 const queryString = require('query-string');
+const colors = require('colors');
+
 
 class YtAPI {
   constructor(){
@@ -9,6 +11,8 @@ class YtAPI {
     this.parserAttr = 'data-context-item-id';
     this.parserTag = 'div';
     this.jsonFolder = './src/app/datajson';
+    this.expectedLength = 120;
+    this.currentLength = 0;
 
     this.searchParams = {
       search_query : 'site:youtube.com',
@@ -46,7 +50,8 @@ class YtAPI {
       cantParse : `Can't parse top %s HTML page from YouTube`,
       cantGet : `Can't get top %s HTML page from YouTube`,
       cantSave: `Can't save top %s to JSON`,
-      saved: `Top %s Saved! Length %s`
+      saved: `Top %s Saved! Length %s`,
+      allIsOk: `All is OK!`
     }
   }
 
@@ -117,7 +122,12 @@ class YtAPI {
       if (err) {
         console.error(this.messages.cantSave, jsonName);
       } else {
+        this.currentLength += array.length;
         console.log(this.messages.saved, jsonName, array.length);
+      }
+      if (this.currentLength === this.expectedLength) {
+        console.log(`============================`);
+        console.log(this.messages.allIsOk.green)
       }
     });
   }
