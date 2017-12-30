@@ -1,4 +1,3 @@
-import allTime from './datajson/alltime.json';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  ids = allTime;
+  type: any;
+  constructor() {
+    this.type = {
+      isTopHour: true,
+      isTopToday: false,
+      isTopThisWeek: false,
+      isTopThisMonth: false,
+      isTopThisYear: false,
+      isTopAllTime: false
+    };
+  }
+
+  showRegion(region) {
+    Object.keys(this.type).forEach(type => {
+      this.type[type] = type === region;
+    });
+  }
 }
+
+
