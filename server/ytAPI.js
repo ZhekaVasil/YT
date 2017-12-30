@@ -11,8 +11,6 @@ class YtAPI {
     this.parserAttr = 'data-context-item-id';
     this.parserTag = 'div';
     this.jsonFolder = './src/app/datajson';
-    this.expectedLength = 120;
-    this.currentLength = 0;
 
     this.searchParams = {
       search_query : 'site:youtube.com',
@@ -73,10 +71,10 @@ class YtAPI {
       if (array.length) {
         this.writeToJson(array, jsonName);
       } else {
-        console.error(this.messages.cantParse, jsonName)
+        console.log(this.messages.cantParse.red, jsonName)
       }
     }).catch(() => {
-      console.error(this.messages.cantGet, jsonName)
+      console.log(this.messages.cantGet.red, jsonName)
     })
   }
 
@@ -120,14 +118,9 @@ class YtAPI {
   writeToJson(array, jsonName) {
     fs.writeFile(`${this.jsonFolder}/${jsonName}.json`, JSON.stringify(array), (err) => {
       if (err) {
-        console.error(this.messages.cantSave, jsonName);
+        console.log(this.messages.cantSave.red, jsonName);
       } else {
-        this.currentLength += array.length;
-        console.log(this.messages.saved, jsonName, array.length);
-      }
-      if (this.currentLength === this.expectedLength) {
-        console.log(`============================`);
-        console.log(this.messages.allIsOk.green)
+        console.log(this.messages.saved.green, jsonName, array.length);
       }
     });
   }
