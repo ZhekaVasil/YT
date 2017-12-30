@@ -58,7 +58,7 @@ class YtAPI {
    * @param {Object} params Object with URL params
    * @param {String} jsonName Name of created json file
    */
-  getHTML(params, jsonName) {
+  performAction(params, jsonName) {
     let urlParams = queryString.stringify(params);
     let url = `${this.ytUrl}?${urlParams}`;
     fetch(url).then(res => {
@@ -83,7 +83,7 @@ class YtAPI {
   getYTdata(period) {
     let settings = this.filters[period];
     let params = Object.assign(this.searchParams, {[this.filters.filterParam] : settings.filter});
-    this.getHTML(params, settings.jsonName);
+    this.performAction(params, settings.jsonName);
   }
 
   /**
