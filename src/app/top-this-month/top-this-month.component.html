@@ -1,6 +1,8 @@
 <h2>Top This Month</h2>
-<div *ngFor="let id of ids">
-  <a [href]="'https://www.youtube.com/watch?v=' + id" target="_blank">
-    <img [src]="'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'">
+<div *ngFor="let item of items">
+  <h3>{{item.snippet.title}}</h3>
+  <a [href]="'https://www.youtube.com/watch?v=' + item.id" target="_blank">
+    <img [src]="item.snippet.thumbnails.high.url">
   </a>
+  <p style="margin-top: 0;">{{item.statistics.viewCount | number}} views</p>
 </div>

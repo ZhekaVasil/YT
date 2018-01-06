@@ -12,6 +12,9 @@ class YtAPI {
     this.parserTag = 'div';
     this.jsonFolder = __dirname + '/../datajson';
 
+    this.apiKey = 'AIzaSyAuJhmsup-LSHQP5N114ooVNZ9xd35MA7E';
+    this.apiEndPoint = 'https://www.googleapis.com/youtube/v3/';
+
     this.searchParams = {
       search_query : 'site:youtube.com',
     };
@@ -45,6 +48,7 @@ class YtAPI {
     };
 
     this.messages = {
+      cantFetchAPI: `Can't fetch API for top %s`,
       cantParse : `Can't parse top %s HTML page from YouTube`,
       cantGet : `Can't get top %s HTML page from YouTube`,
       cantSave: `Can't save top %s to JSON`,
@@ -69,13 +73,29 @@ class YtAPI {
     }).then(body => {
       let array = this.parsePage(body);
       if (array.length) {
-        this.writeToJson(array, jsonName);
+        this.getDataFromAPI(array, jsonName).then(data => {
+          this.writeToJson(data, jsonName);
+        });
       } else {
         console.log(this.messages.cantParse.red, jsonName)
       }
     }).catch(() => {
       console.log(this.messages.cantGet.red, jsonName)
     })
+  }
+
+  /**
+   * Get data for videos by ids using YT API
+   *
+   * @param {Array} ids Array of ids
+   * @param {String} jsonName Name of created json file
+   */
+  getDataFromAPI(ids, jsonName) {
+    const stringIds = ids.join(',');
+    const url = this.apiEndPoint + 'videos?id=' + stringIds + '&key=' + this.apiKey + '&part=snippet,statistics';
+    return fetch(url).then(res => res.json()).then(data => data.items).catch(() => {
+      console.log(this.messages.cantFetchAPI.red, jsonName)
+    });
   }
 
   /**

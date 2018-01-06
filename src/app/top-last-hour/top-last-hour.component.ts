@@ -1,4 +1,4 @@
-import lastHour from '../datajson/lastHour.json';
+import lastHour from '../../../datajson/lastHour.json';
 import { Component, OnInit } from '@angular/core';
 import { Http } from "@angular/http";
 import 'rxjs/add/operator/map'
@@ -9,14 +9,14 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./top-last-hour.component.css']
 })
 export class TopLastHourComponent implements OnInit {
-  ids: string[];
+  items: any[];
   constructor(private _http: Http) {
-    this.ids = [];
+    this.items = [];
   }
 
   ngOnInit() {
     this.fetchData().subscribe(data => {
-      this.ids = data
+      this.items = data;
     });
   }
 

@@ -9,14 +9,14 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./top-today.component.css']
 })
 export class TopTodayComponent implements OnInit {
-  ids: string[];
+  items: any[];
   constructor(private _http: Http) {
-    this.ids = [];
+    this.items = [];
   }
 
   ngOnInit() {
     this.fetchData().subscribe(data => {
-      this.ids = data
+      this.items = data
     });
   }
 

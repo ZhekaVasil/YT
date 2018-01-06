@@ -8,7 +8,7 @@ const ytAPI = new YtAPI();
 console.log('Cron Script is running'.yellow);
 // Run job every 5 minute
 // Params: cronTime, onTick, onComplete, startNow, timeZone, context, runOnInit, utcOffset
-const job = new CronJob('00 */5 * * * *', () => {
+const job = new CronJob('00 */10 * * * *', () => {
   let time = moment().format('MM-DD-YYYY HH:mm:ss');
   // Make requests to get top YT videos and write result to JSONs
   console.log('================');

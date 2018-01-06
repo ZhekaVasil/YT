@@ -10,14 +10,14 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./top-this-week.component.css']
 })
 export class TopThisWeekComponent implements OnInit {
-  ids: string[];
+  items: any[];
   constructor(private _http: Http) {
-    this.ids = [];
+    this.items = [];
   }
 
   ngOnInit() {
     this.fetchData().subscribe(data => {
-      this.ids = data
+      this.items = data
     });
   }
 
