@@ -10,7 +10,7 @@ class YtAPI {
     this.ytUrl = 'https://www.youtube.com/results';
     this.parserAttr = 'data-context-item-id';
     this.parserTag = 'div';
-    this.jsonFolder = './src/app/datajson';
+    this.jsonFolder = '../src/app/datajson';
 
     this.searchParams = {
       search_query : 'site:youtube.com',
