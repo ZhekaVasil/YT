@@ -119,6 +119,7 @@ class YtAPI {
     fs.writeFile(`${this.jsonFolder}/${jsonName}.json`, JSON.stringify(array), (err) => {
       if (err) {
         console.log(this.messages.cantSave.red, jsonName);
+        console.log(err);
       } else {
         console.log(this.messages.saved.green, jsonName, array.length);
       }
