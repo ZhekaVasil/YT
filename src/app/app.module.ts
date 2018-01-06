@@ -9,6 +9,8 @@ import { TopLastHourComponent } from './top-last-hour/top-last-hour.component';
 import { TopThisMonthComponent } from './top-this-month/top-this-month.component';
 import { TopThisWeekComponent } from './top-this-week/top-this-week.component';
 
+import { HttpModule, JsonpModule } from '@angular/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { TopThisWeekComponent } from './top-this-week/top-this-week.component';
     TopThisWeekComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    JsonpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
