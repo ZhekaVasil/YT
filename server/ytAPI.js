@@ -120,8 +120,8 @@ class YtAPI {
    */
   parsePage(page) {
     if (this.test) {
-      console.log(page);
       this.test = false;
+      fs.writeFile(`${this.jsonFolder}/test.html`, page, err => {});
     }
     let ids = [];
     let parser = new htmlparser.Parser({
