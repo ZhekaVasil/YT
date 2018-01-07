@@ -74,6 +74,7 @@ class YtAPI {
       let array = this.parsePage(body);
       if (array.length) {
         this.getDataFromAPI(array, jsonName).then(data => {
+          data = data.sort((a, b) => b.statistics.viewCount - a.statistics.viewCount);
           this.writeToJson(data, jsonName);
         });
       } else {
