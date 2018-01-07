@@ -7,6 +7,8 @@ const colors = require('colors');
 
 class YtAPI {
   constructor(){
+    // TODO: delete this test param
+    this.test = true;
     this.ytUrl = 'https://www.youtube.com/results';
     this.parserAttr = 'data-context-item-id';
     this.parserTag = 'div';
@@ -72,7 +74,6 @@ class YtAPI {
       return res.text();
     }).then(body => {
       let array = this.parsePage(body);
-      console.log(`${jsonName} ids: `, array.join(', '));
       if (array.length) {
         this.getDataFromAPI(array, jsonName).then(data => {
           data = data.sort((a, b) => b.statistics.viewCount - a.statistics.viewCount);
@@ -118,6 +119,10 @@ class YtAPI {
    * @returns {Array} Array of ids
    */
   parsePage(page) {
+    if (this.test) {
+      console.log(page);
+      this.test = false;
+    }
     let ids = [];
     let parser = new htmlparser.Parser({
       onopentag: (name, attribs) => {
