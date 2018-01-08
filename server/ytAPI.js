@@ -7,8 +7,6 @@ const colors = require('colors');
 
 class YtAPI {
   constructor(){
-    // TODO: delete this test param
-    this.test = true;
     this.ytUrl = 'https://www.youtube.com/results';
     this.parserAttr = 'data-context-item-id';
     this.ignoreParseAttr = 'data-ad-impressions';
@@ -120,10 +118,6 @@ class YtAPI {
    * @returns {Array} Array of ids
    */
   parsePage(page) {
-    if (this.test) {
-      this.test = false;
-      fs.writeFile(`${this.jsonFolder}/test.html`, page, err => {});
-    }
     let ids = [];
     let parser = new htmlparser.Parser({
       onopentag: (name, attribs) => {
