@@ -11,6 +11,7 @@ class YtAPI {
     this.test = true;
     this.ytUrl = 'https://www.youtube.com/results';
     this.parserAttr = 'data-context-item-id';
+    this.ignoreParseAttr = 'data-ad-impressions';
     this.parserTag = 'div';
     this.jsonFolder = __dirname + '/../datajson';
 
@@ -126,7 +127,7 @@ class YtAPI {
     let ids = [];
     let parser = new htmlparser.Parser({
       onopentag: (name, attribs) => {
-        if(name === this.parserTag && attribs[this.parserAttr]){
+        if(name === this.parserTag && attribs[this.parserAttr] && !attribs[this.ignoreParseAttr]){
           ids.push(attribs[this.parserAttr]);
         }
       },
