@@ -72,6 +72,7 @@ class YtAPI {
       return res.text();
     }).then(body => {
       let array = this.parsePage(body);
+      console.log(`${jsonName} ids: `, array.join(', '));
       if (array.length) {
         this.getDataFromAPI(array, jsonName).then(data => {
           data = data.sort((a, b) => b.statistics.viewCount - a.statistics.viewCount);
