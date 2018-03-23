@@ -1,0 +1,5 @@
+#!/bin/sh
+# Run linting tasks and prevent push in case of errors
+
+echo "Run linting task"
+gulp test --dev && echo "Lint checking passed." && exit 0 || echo "Errors in linting. For more information run gulp lint --dev --logger" && exit 1
