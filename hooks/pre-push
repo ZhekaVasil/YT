@@ -1,5 +1,7 @@
 #!/bin/sh
 # Run linting tasks and prevent push in case of errors
 
-echo "Run linting task"
-gulp test --dev && echo "Lint checking passed." && exit 0 || echo "Errors in linting. For more information run gulp lint --dev --logger" && exit 1
+echo "Push wiki pages"
+cd ../YT.wiki/
+echo "Pushing wiki pages"
+git add . && git push && exit 0 || echo "Can not push wiki pages" exit 1
