@@ -1,6 +1,8 @@
 #!/bin/sh
-# Run linting tasks and prevent push in case of errors
+# Wiki push
 
 cd ../YT.wiki
+git add .
+git commit -m "Wiki update"
 git status
 
