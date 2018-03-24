@@ -1,0 +1,21 @@
+#!/bin/sh
+# Wiki push
+
+wikiFolder="YT.wiki"
+wikiStatus=$(git status ./$wikiFolder --porcelain)
+
+
+if [ -e ./$wikiFolder ]
+then
+  if [[ "$wikiStatus" = *"M $wikiFolder"* ]]
+  then
+  echo
+  echo "Wiki has changed. Please commit and push the changes from Wiki submodule - $wikiFolder"
+  echo
+  exit 1
+  fi
+else
+  echo
+  echo "Wiki submodule is absent in your local repository"
+  echo
+fi
