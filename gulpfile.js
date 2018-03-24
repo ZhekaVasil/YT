@@ -16,7 +16,7 @@ gulp.task('wiki', function(){
       val: 'franch'
     }
   ];
-  gulp.src('YT.wiki/*.md')
+  gulp.src('src/wiki/templates/*.md')
     .pipe(handlebars(data, {}))
-    .pipe(gulp.dest('dist/YT.wiki'));
+    .pipe(gulp.dest('YT.wiki'));
 });
