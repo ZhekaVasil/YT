@@ -1,8 +1,9 @@
 #!/bin/sh
 # Wiki push
 
-cd ../YT.wiki
-git add .
-git commit -m "Wiki update"
-git status
-
+if [-e YT.wiki && git status YT.wiki --porcelain = 'M YT.wiki']
+then
+  echo 'Action'
+else
+  echo 'No Action'
+fi
