@@ -8,9 +8,9 @@ if [ -e ./$wikiFolder ]
 then
   if [[ "$wikiStatus" = *"M $wikiFolder"* ]]
   then
-  echo 'Wiki has changed'
+  echo '${Yellow}Wiki has changed. Please commit and push the changes'
   fi
 else
-  echo 'Wiki page is absent in your local repository'
+  echo '${Yellow}Wiki page is absent in your local repository'
 fi
 
