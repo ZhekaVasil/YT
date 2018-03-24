@@ -7,7 +7,6 @@ wikiStatus=$(git status ./$wikiFolder --porcelain)
 
 if [ -z "$(ls -A ./$wikiFolder)" ]
 then
-  echo 'asdfasd'
   echo
   echo "Wiki submodule is absent in your local repository"
   echo
