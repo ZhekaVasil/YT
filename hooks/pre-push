@@ -2,8 +2,4 @@
 # Run linting tasks and prevent push in case of errors
 
 cd ../YT.wiki
-echo "Pushing wiki pages"
-git pull
-git add .
-git commit -m "Wiki update"
-git push
+echo ls
