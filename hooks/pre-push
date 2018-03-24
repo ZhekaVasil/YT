@@ -2,4 +2,5 @@
 # Run linting tasks and prevent push in case of errors
 
 cd ../YT.wiki
-ls
+git status
+
