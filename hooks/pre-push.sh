@@ -9,11 +9,6 @@ then
   if [[ "$wikiStatus" = *"M $wikiFolder"* ]]
   then
   echo 'Wiki has changed'
-  cd ../$wikiFolder
-  git add -A
-  git commit -m "Wiki update"
-  git push origin master
-  echo 'Wiki has been pushed'
   fi
 else
   echo 'Wiki page is absent in your local repository'
