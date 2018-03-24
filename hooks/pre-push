@@ -4,14 +4,15 @@
 wikiFolder="YT.wiki"
 wikiStatus=$(git status ./$wikiFolder --porcelain)
 Yellow='\033[1;33m'
+NC='\033[0m' # No Color
 
 if [ -e ./$wikiFolder ]
 then
   if [[ "$wikiStatus" = *"M $wikiFolder"* ]]
   then
-  echo -e "${Yellow}Wiki has changed. Please commit and push the changes"
+  echo -e "${Yellow}Wiki has changed. Please commit and push the changes from Wiki folder${NC}"
   fi
 else
-  echo -e "${Yellow}Wiki page is absent in your local repository"
+  echo -e "${Yellow}Wiki page is absent in your local repository${NC}"
 fi
 
