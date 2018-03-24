@@ -3,6 +3,7 @@
 
 cd ../YT.wiki
 echo "Pushing wiki pages"
+git pull
 git add .
 git commit -m "Wiki update"
 git push
