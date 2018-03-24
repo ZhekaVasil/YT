@@ -5,7 +5,7 @@ if [-e YT.wiki && git status YT.wiki --porcelain = 'M YT.wiki']
 then
   echo 'Action'
 else
-  echo ((-e YT.wiki))
-  echo ((git status YT.wiki --porcelain))
+  echo -e YT.wiki
+  echo git status YT.wiki --porcelain
   echo 'No Action'
 fi
