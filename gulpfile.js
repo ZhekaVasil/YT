@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var handlebars = require('gulp-compile-handlebars');
+var ext_replace = require('gulp-ext-replace');
 
 gulp.task('wiki', function(){
   var data = [
@@ -14,9 +15,14 @@ gulp.task('wiki', function(){
     {
       name: 'fr',
       val: 'franch'
+    },
+    {
+      name: 'nz',
+      val: 'new lang'
     }
   ];
-  gulp.src('src/wiki/templates/*.md')
+  gulp.src('src/wiki/templates/*.hbs')
     .pipe(handlebars(data, {}))
+    .pipe(ext_replace('.md'))
     .pipe(gulp.dest('YT.wiki'));
 });
