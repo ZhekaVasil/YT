@@ -2,5 +2,4 @@
 # Run linting tasks and prevent push in case of errors
 
 cd ../YT.wiki
-test = ls
-echo test
+ls
