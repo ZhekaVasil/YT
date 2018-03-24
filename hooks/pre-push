@@ -16,7 +16,7 @@ then
   fi
 else
   echo
-  echo "Wiki page is absent in your local repository"
+  echo "Wiki submodule is absent in your local repository"
   echo
 fi
 
