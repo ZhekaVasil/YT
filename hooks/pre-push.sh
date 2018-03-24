@@ -4,7 +4,7 @@
 wikiFolder="YT.wiki"
 wikiStatus=$(git status ./$wikiFolder --porcelain)
 
-if [ -e ../$wikiFolder ]
+if [ -e ./$wikiFolder ]
 then
   if [[ "$wikiStatus" = *"M $wikiFolder"* ]]
   then
