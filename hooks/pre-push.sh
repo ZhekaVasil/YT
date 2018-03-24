@@ -2,7 +2,7 @@
 # Wiki push
 
 wikiFolder="YT.wiki"
-wikiStatus=$(git status ../$wikiFolder --porcelain)
+wikiStatus=$(git status ./$wikiFolder --porcelain)
 
 if [ -e ../$wikiFolder ]
 then
