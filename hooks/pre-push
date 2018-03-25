@@ -1,20 +1,27 @@
 #!/bin/sh
 # Wiki push
 
+submoduleLink=https://github.com/ZhekaVasil/YT.wiki.git
 wikiFolder="YT.wiki"
 wikiStatus=$(git status ./$wikiFolder --porcelain)
 
 
-if [ ! -d "./$wikiFolder" ] || [ -z "$(ls -A ./$wikiFolder)" ]
+if [ ! -d "./$wikiFolder" ]
 then
   echo
   echo "Wiki submodule is absent in your local repository"
+  echo "Please add the submodule: git submodule add --force $submoduleLink"
+  echo
+elif [ -z "$(ls -A ./$wikiFolder)" ]
+then
+  echo
+  echo "Wiki submodule is empty. Please use the command: git submodule init && git submodule update"
   echo
 elif [[ "$wikiStatus" = *"M $wikiFolder"* ]]
   then
   echo
-  echo "Wiki has changed. Please commit and push the changes from Wiki submodule - $wikiFolder/"
-  echo "After the pushing please commit the changes in main repository (git add $wikiFolder && git commit -m <message> && git push)"
+  echo "Wiki has changed. Please commit and push the changes from Wiki submodule - cd $wikiFolder && git add . && git commit -m <message> && git push"
+  echo "After the pushing please commit the changes in main repository: cd .. && git add $wikiFolder && git commit -m <message> && git push"
   echo
   exit 1
 fi
