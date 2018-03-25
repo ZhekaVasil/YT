@@ -2,8 +2,6 @@ const CronJob = require('cron').CronJob;
 const YtAPI = require('./ytAPI').YtAPI;
 const colors = require('colors');
 const moment = require('moment-timezone');
-
-
 const ytAPI = new YtAPI();
 
 console.log('Cron Script is running'.yellow);
