@@ -10,12 +10,11 @@ then
   echo
   echo "Wiki submodule is absent in your local repository"
   echo
-  fi
-else
-if [[ "$wikiStatus" = *"M $wikiFolder"* ]]
+elif [[ "$wikiStatus" = *"M $wikiFolder"* ]]
   then
   echo
   echo "Wiki has changed. Please commit and push the changes from Wiki submodule - $wikiFolder/"
   echo
   exit 1
 fi
+
