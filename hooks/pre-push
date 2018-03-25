@@ -5,7 +5,7 @@ wikiFolder="YT.wiki"
 wikiStatus=$(git status ./$wikiFolder --porcelain)
 
 
-if [ -z "$(ls -A ./$wikiFolder)" ]
+if [ ! -e "./$wikiFolder" || -z "$(ls -A ./$wikiFolder)" ]
 then
   echo
   echo "Wiki submodule is absent in your local repository"
